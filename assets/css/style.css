@@ -498,6 +498,9 @@ nav.main-nav.scrolled {
 .hero-image-card img {
     object-fit: cover;
     display: block;
+    width: 100%;
+    height: 100%;
+    object-position: top;
 }
 
 .hero-image-placeholder {
@@ -508,7 +511,6 @@ nav.main-nav.scrolled {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
     color: var(--muted);
 }
 
@@ -567,6 +569,7 @@ nav.main-nav.scrolled {
 .float-card1 {
     top: 2rem;
     left: -2.5rem;
+    z-index: 999;
 }
 
 .float-card2 {
