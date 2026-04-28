@@ -1,538 +1,1462 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doyel Roy | Portfolio</title>
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doyel Roy | Designer & Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --bg:        #0d0f14;
+      --surface:   #13161e;
+      --card:      #191d28;
+      --border:    #252a38;
+      --accent:    #7c6ff7;
+      --accent2:   #c084fc;
+      --mint:      #5eead4;
+      --gold:      #fbbf24;
+      --text:      #e8eaf0;
+      --muted:     #8892a4;
+      --white:     #ffffff;
+      --r: .75rem;
+      --r2: 1.25rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise Overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: .5;
+    }
+
+    /* ── Gradient Orbs ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb1 { width: 600px; height: 600px; background: rgba(124,111,247,.12); top: -200px; left: -200px; }
+    .orb2 { width: 500px; height: 500px; background: rgba(192,132,252,.08); bottom: 0; right: -150px; }
+    .orb3 { width: 400px; height: 400px; background: rgba(94,234,212,.06); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+    /* ── Container ── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+    section { padding: 6rem 0; }
+
+    /* ── Typography ── */
+    .display { font-family: 'Playfair Display', serif; }
+    .mono    { font-family: 'Space Mono', monospace; font-size: .8em; }
+    h1,h2,h3,h4 { line-height: 1.2; }
+    em { font-style: italic; color: var(--accent2); }
+
+    /* ── Section Label ── */
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--mint);
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1rem;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 80px; }
+    .section-title-big {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .75rem 1.75rem;
+      border-radius: 100px;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .25s;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      box-shadow: 0 0 30px rgba(124,111,247,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(124,111,247,.5); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(124,111,247,.06); }
+    .btn-ghost {
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); }
+
+    /* ── Chip / Tag ── */
+    .chip {
+      display: inline-block;
+      padding: .3rem .85rem;
+      border-radius: 100px;
+      font-size: .75rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      transition: all .2s;
+    }
+    .chip.accent { border-color: rgba(124,111,247,.4); color: var(--accent); background: rgba(124,111,247,.08); }
+    .chip.mint   { border-color: rgba(94,234,212,.4);  color: var(--mint);   background: rgba(94,234,212,.08); }
+    .chip.gold   { border-color: rgba(251,191,36,.4);  color: var(--gold);   background: rgba(251,191,36,.08); }
+
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    nav.main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      padding: 1rem 0;
+      transition: background .3s, backdrop-filter .3s;
+    }
+    nav.main-nav.scrolled {
+      background: rgba(13,15,20,.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--white);
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: .5rem;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: .8rem;
+      letter-spacing: .2em;
+      color: var(--mint);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--mint); }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: .5rem;
+    }
+    .hero-name .last { color: transparent; -webkit-text-stroke: 1.5px var(--accent2); }
+    .hero-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: .8rem; color: var(--muted); }
+
+    /* Hero image card */
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-image-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      max-height: 520px;
+      position: relative;
+    }
+    .hero-image-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-image-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, rgba(124,111,247,.15), rgba(192,132,252,.1));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--muted);
+    }
+    .hero-image-placeholder svg { opacity: .3; }
+    .hero-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(13,15,20,.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: .6rem 1.25rem;
+      white-space: nowrap;
+      font-size: .8rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+    .float-card {
+      position: absolute;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .85rem 1.1rem;
+      backdrop-filter: blur(8px);
+      font-size: .8rem;
+    }
+    .float-card1 { top: 2rem; left: -2.5rem; }
+    .float-card2 { top: 45%; right: -2.5rem; }
+    .float-card-label { color: var(--muted); font-size: .7rem; margin-bottom: .2rem; }
+    .float-card-val { font-weight: 600; color: var(--white); }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .scroll-hint-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollLine 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    /* ══════════════════════════════
+       ABOUT
+    ══════════════════════════════ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-visual {
+      position: sticky;
+      top: 6rem;
+    }
+    .about-img-frame {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 4/5;
+      background: var(--card);
+      position: relative;
+    }
+    .about-img-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,15,20,.8) 0%, transparent 60%);
+    }
+    .about-img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, rgba(94,234,212,.08), rgba(124,111,247,.12));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: .9rem;
+    }
+    .about-tags {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem;
+    }
+    .about-body p { color: var(--muted); margin-bottom: 1rem; line-height: 1.9; }
+    .highlight-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--r);
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .highlight-box p { color: var(--text); margin: 0; font-size: .95rem; }
+    .about-services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-top: 2rem;
+    }
+    .service-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-size: .85rem;
+      font-weight: 500;
+      transition: border-color .2s, background .2s;
+    }
+    .service-pill:hover { border-color: var(--accent); background: rgba(124,111,247,.06); }
+    .service-icon { font-size: 1.2rem; }
+
+    /* ══════════════════════════════
+       SKILLS
+    ══════════════════════════════ */
+    .skills-section { background: var(--surface); }
+    .skills-categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .skill-cat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2rem 1.75rem;
+      transition: border-color .25s, transform .25s;
+    }
+    .skill-cat:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .skill-cat-icon {
+      width: 48px; height: 48px;
+      border-radius: .75rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .cat-design .skill-cat-icon { background: rgba(192,132,252,.12); }
+    .cat-front  .skill-cat-icon { background: rgba(124,111,247,.12); }
+    .cat-back   .skill-cat-icon { background: rgba(94,234,212,.12); }
+    .skill-cat h4 { font-size: 1.05rem; margin-bottom: .5rem; font-weight: 600; }
+    .skill-cat .sub { font-size: .78rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .skill-list { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .skill-list li {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: .88rem;
+    }
+    .skill-list li .name { color: var(--text); }
+    .skill-bar-wrap { width: 100px; height: 4px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(to right, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1s ease;
+    }
+    .skill-bar-fill.animated { transform: scaleX(1); }
+
+    /* Tools grid */
+    .tools-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: 3rem;
+    }
+    .tool-chip {
+      padding: .45rem 1rem;
+      border-radius: 100px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: .82rem;
+      color: var(--muted);
+      transition: all .2s;
+      cursor: default;
+    }
+    .tool-chip:hover { border-color: var(--accent); color: var(--accent); background: rgba(124,111,247,.06); }
+
+    /* ══════════════════════════════
+       SERVICES / WHAT I OFFER
+    ══════════════════════════════ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2.25rem 2rem;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transition: transform .3s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { border-color: rgba(124,111,247,.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+    .service-num {
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 { font-size: 1.15rem; margin-bottom: .75rem; }
+    .service-card p { font-size: .88rem; color: var(--muted); line-height: 1.8; }
+    .service-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+    /* ══════════════════════════════
+       PORTFOLIO
+    ══════════════════════════════ */
+    .portfolio-filter {
+      display: flex; gap: .65rem; flex-wrap: wrap; margin: 2rem 0 3rem;
+    }
+    .filter-btn {
+      padding: .45rem 1.1rem;
+      border-radius: 100px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: .82rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      transition: all .3s;
+    }
+    .project-card:hover { border-color: rgba(124,111,247,.4); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+    .project-thumb {
+      background: linear-gradient(135deg, rgba(124,111,247,.15), rgba(192,132,252,.1));
+      height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: rgba(13,15,20,.7);
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .project-card:hover .project-overlay { opacity: 1; }
+    .project-body { padding: 1.5rem; }
+    .project-tags { display: flex; gap: .45rem; flex-wrap: wrap; margin-bottom: .85rem; }
+    .project-body h3 { font-size: 1.05rem; margin-bottom: .65rem; }
+    .project-body p { font-size: .86rem; color: var(--muted); }
+    .project-card.featured { grid-column: span 2; }
+    .project-card.featured .project-thumb { height: 280px; }
+
+    /* ══════════════════════════════
+       EDUCATION & TRAINING
+    ══════════════════════════════ */
+    .edu-section { background: var(--surface); }
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-top: 3rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1.5rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: .5rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+    .timeline-item.training-item::before { background: var(--mint); box-shadow: 0 0 12px var(--mint); }
+    .timeline-date {
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+      margin-bottom: .5rem;
+    }
+    .timeline-item.training-item .timeline-date { color: var(--mint); }
+    .timeline-item h4 { font-size: 1.05rem; margin-bottom: .25rem; }
+    .timeline-item .inst { color: var(--muted); font-size: .88rem; margin-bottom: .6rem; }
+    .timeline-item p { font-size: .86rem; color: var(--muted); }
+    .timeline-bullets { list-style: none; margin-top: .65rem; }
+    .timeline-bullets li {
+      font-size: .85rem; color: var(--muted);
+      padding-left: 1.1rem;
+      position: relative;
+      margin-bottom: .3rem;
+    }
+    .timeline-bullets li::before {
+      content: '▸';
+      position: absolute; left: 0;
+      color: var(--mint);
+    }
+    .edu-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .edu-col-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ══════════════════════════════
+       CONTACT
+    ══════════════════════════════ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    .contact-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .contact-info p { color: var(--muted); margin-bottom: 2rem; line-height: 1.8; }
+    .contact-links { display: flex; flex-direction: column; gap: .85rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: .85rem 1.1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      transition: all .2s;
+      font-size: .9rem;
+    }
+    .contact-link:hover { border-color: var(--accent); background: rgba(124,111,247,.06); color: var(--accent); }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      border-radius: .5rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(124,111,247,.12);
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    /* Form */
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { font-size: .8rem; font-weight: 500; color: var(--muted); display: block; margin-bottom: .45rem; letter-spacing: .04em; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: .5rem;
+      padding: .8rem 1rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { height: 130px; resize: vertical; }
+    #form-result { margin-top: 1rem; font-size: .85rem; }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand p { font-size: .88rem; color: var(--muted); margin: 1rem 0 1.5rem; line-height: 1.8; }
+    .footer-socials { display: flex; gap: .65rem; }
+    .social-btn {
+      width: 38px; height: 38px;
+      border-radius: .5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: all .2s;
+    }
+    .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-col h5 { font-size: .95rem; font-weight: 600; margin-bottom: 1.25rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .footer-col ul a { font-size: .88rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-col ul a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    /* ══════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(1) { transition-delay: 0s; }
+    .fade-up:nth-child(2) { transition-delay: .1s; }
+    .fade-up:nth-child(3) { transition-delay: .2s; }
+    .fade-up:nth-child(4) { transition-delay: .3s; }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-image-wrap { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { position: static; }
+      .skills-categories { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+      .edu-columns { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .float-card { display: none; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 4rem 0; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .skills-categories { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-services { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Header Start -->
-    <header>
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="logo-block">
-                    <a href="index.html">
-                        <img src="./assets/images/my-logo.png" alt="my-logo" />
-                    </a>
-                </div>
 
-                <nav>
-                    <ul class="d-flex gap-5">
-                        <li><a href="./index.html">home</a></li>
-                        <li><a href="#">about</a></li>
-                        <li><a href="#">skills</a></li>
-                        <li><a href="#">projects</a></li>
-                        <li><a href="#">contact</a></li>
-                    </ul>
-                </nav>
+<!-- Background orbs -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
 
-                <div class="hire-me-btn">
-                    <a href="#form" class="site-btn">hire me</a>
-                </div>
-            </div>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <a href="#hero" onclick="closeMobile()">Home</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#portfolio" onclick="closeMobile()">Projects</a>
+  <a href="#education" onclick="closeMobile()">Education</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav class="main-nav" id="mainNav">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">Doyel<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-primary" style="padding:.6rem 1.25rem;font-size:.85rem;">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Available for freelance &amp; full-time</p>
+        <h1 class="hero-name display">
+          Doyel<br><span class="last">Roy</span>
+        </h1>
+        <div class="hero-roles">
+          <span class="chip accent">UI/UX Designer</span>
+          <span class="chip mint">Graphic Designer</span>
+          <span class="chip gold">Front-End Developer</span>
+          <span class="chip">WordPress Dev</span>
         </div>
+        <p class="hero-desc">
+          Creative designer &amp; developer crafting beautiful, user-centered digital experiences — from wireframes to pixel-perfect interfaces and clean, responsive code.
+        </p>
+        <div class="hero-cta">
+          <a href="./assets/images/sample.pdf" download="doyel-roy-resume" class="btn btn-primary">
+            ↓ Download CV
+          </a>
+          <a href="#portfolio" class="btn btn-outline">View Projects</a>
         </div>
-    </header>
-
-    <!-- Banner-section Start -->
-    <section class="banner-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-6 col-sm-12">
-                    <div class="content">
-                        <span class="fs-3 text-white">hi, i am <em>doyel roy</em></span>
-                        <h1>Front-End &amp; WordPress Developer
-                        </h1>
-                        <p class="fs-5 text-white">I develop modern, responsive websites using HTML, CSS,
-                            JavaScript, and WordPress.Passionate about
-                            creating clean UI,
-                            smooth user experience, and functional websites.</p>
-                    </div>
-                    <div class="d-flex align-items-center gap-4">
-                        <div class="download-btn rounded-3">
-                            <a href="./assets/images/sample.pdf" class=" text-white"
-                                download="doyel-roy-resume">download CV</a>
-                        </div>
-
-                        <div class="view-btn rounded-3">
-                            <a href="#portfolio-section" class="text-white">view all projects</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <img src="./assets/images/banner.png" alt="banner" class="img-fluid" />
-                </div>
-            </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">1<span>+</span></div>
+            <div class="stat-label">Year Training</div>
+          </div>
+          <div>
+            <div class="stat-num">7<span>+</span></div>
+            <div class="stat-label">Tools Mastered</div>
+          </div>
+          <div>
+            <div class="stat-num">2<span>+</span></div>
+            <div class="stat-label">Live Projects</div>
+          </div>
         </div>
-    </section>
-    <!-- Banner-section End -->
+      </div>
 
-    <!-- About-section Start -->
-    <section class="about-section">
-        <div class="container">
-            <div class="title-block text-center">
-                <h2 class="section-title">about me</h2>
-            </div>
-            <div class="about">
-                <div class="row align-items-center">
-
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <img src="./assets/images/about-img.png" alt="about-img" class="img-fluid" />
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-
-                        <div class="content text-white">
-                            <p>I am a beginner Front-End and WordPress Developer with a
-                                strong
-                                interest in website design and development.</p>
-                            <p>I work with HTML, CSS, and JavaScript to create responsive
-                                layouts and interactive user
-                                interfaces. Currently,
-                                I am expanding my skills in WordPress to build dynamic and customizable websites.
-                            </p>
-                            <p>I enjoy learning new technologies, improving my design
-                                skills,
-                                and building real-world projects to grow as a developer.</p>
-
-                            <div class="read-btn rounded-3">
-                                <a href="#">read more</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+      <div class="hero-image-wrap">
+        <div class="float-card float-card1">
+          <div class="float-card-label">Primary Role</div>
+          <div class="float-card-val">🎨 UI/UX Designer</div>
         </div>
-    </section>
-    <!-- About End -->
-
-    <!-- skill-section start -->
-    <section class="skill-section">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">my skills</h2>
-                <p>These are the technologies and tools I use to design and develop responsive, user-friendly websites.
-                </p>
-            </div>
-            <div class="row text-center">
-                <!-- skill card -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-card">
-                        <img src="./assets/images/ps.logo.png" alt="Photoshop Logo" class="img-fluid" />
-                        <span class="fs-4 text-white">photoshop</span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-card">
-                        <img src="./assets/images/figma.logo.png" alt="figma" class="img-fluid" />
-                        <span class="fs-4 text-white">Figma</span>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-card">
-                        <img src="./assets/images/html.logo.png" alt="html" class="img-fluid" />
-                        <span class="fs-4 text-white">HTML</span>
-                    </div>
-                </div>
-
-                <div class=" col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-card">
-                        <img src="./assets/images/css-logo.png" alt="css" />
-                        <span class="fs-4 text-white">CSS & Bootstrap</span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-card">
-                        <img src="./assets/images/jQuery.logo.png" alt="jQuery" />
-                        <span class="fs-4 text-white">jQuery</span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-card">
-                        <img src="./assets/images/js.logo.png" alt="js" />
-                        <span class="fs-4 text-white">JavaScript</span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-card">
-                        <img src="./assets/images/php-logo.png" alt="php" />
-                        <span class="fs-4 text-white d-block">PHP & MySQL</span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-card">
-                        <img src="./assets/images/wordpress.logo.png" alt="wordpress" />
-                        <span class="fs-4 text-white">WordPress</span>
-                    </div>
-                </div>
-
-            </div>
+        <div class="hero-image-card">
+          <div class="hero-image-placeholder">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span style="font-size:.8rem;">Replace with your photo<br>./assets/images/banner.png</span>
+          </div>
         </div>
-    </section>
-    <!-- skill-section end -->
-
-
-    <!-- portfolio-section start -->
-    <section class="portfolio-section" id="portfolio-section">
-        <div class="container">
-            <h2 class="section-title">my portfolio</h2>
-
-            <div class="row align-items-center">
-                <div class="col-lg-7 col-md-6 col-sm-12">
-                    <p>Let’s Have a look
-                        at <em>My Portfolio</em></p>
-                </div>
-
-                <div class="col-lg-5 col-md-4 col-sm-12 text-end">
-                    <a href="#" class="site-btn">view all projects</a>
-                </div>
-            </div>
-            <!-- first project section -->
-            <div class="project-section rounded-3">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="lt-block">
-                            <img src="./assets/images/project.image.png" alt="project-img" class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="rt-block">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="tag">
-                                    <span>app design</span>
-                                </div>
-
-                                <div class="tag">
-                                    <span>UI/UX Design</span>
-                                </div>
-
-                                <div class="tag">
-                                    <span>Wireframe</span>
-                                </div>
-                            </div>
-                            <div class="project-title">
-                                <h3>UI/Ux Design- UI/Ux Design
-                                    App Solution </h3>
-                            </div>
-
-                            <div class="content">
-                                <p>A collection of my graphic design work, including
-                                    posters,
-                                    banners,
-                                    logos, and social media creatives, focused
-                                    on clean design and visual communication.</p>
-
-                                <div class="d-flex gap-4">
-                                    <a href="#" class="site-btn">Live demo</a>
-                                    <a href="#" class="site-btn-outline">GitHub</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 2nd project section -->
-            <div class="project-section rounded-3 mt-5">
-                <div class="row align-items-center flex-row-reverse">
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="lt-block">
-                            <img src="./assets/images/project.image-1.png" alt="project-img" class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="rt-block">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="tag">
-                                    <span>app design</span>
-                                </div>
-
-                                <div class="tag">
-                                    <span>UI/UX Design</span>
-                                </div>
-
-                                <div class="tag">
-                                    <span>Wireframe</span>
-                                </div>
-                            </div>
-                            <div class="project-title">
-                                <h3>Botanic-Plant Website &
-                                    Design Solution </h3>
-                            </div>
-
-                            <div class="content">
-                                <p>A collection of my graphic design work, including
-                                    posters,
-                                    banners,
-                                    logos, and social media creatives, focused
-                                    on clean design and visual communication.</p>
-
-                                <div class="d-flex gap-4">
-                                    <a href="#" class="site-btn">Live demo</a>
-                                    <a href="#" class="site-btn-outline">GitHub</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-    </section>
-    <!-- portfolio-section end -->
-
-    <!-- education-section start -->
-    <section class="education-section">
-        <div class="container">
-
-            <h2 class="section-title text-center">My Academic Journey</h2>
-
-            <div class="education">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-
-                        <div class="sub-title d-flex align-items-center gap-3">
-                            <img src="./assets/images/education-logo.png" alt="education-logo" class="img-fluid" />
-                            <span class="fs-1 fw-normal">education</span>
-
-                        </div>
-
-                        <div class="education-details">
-                            <h5>learn computer academy</h5>
-                            <span>2025-2026</span>
-                            <p>Learning Web Design & HTML, CSS, JS, Bootstrap, JavaScript, jQuery, PHP & MySQL,
-                                WordPress
-                            </p>
-                        </div>
-
-                        <div class="education-details">
-                            <h5>SC College Science & Arts</h5>
-                            <span>2019-2022</span>
-                            <p>Bachelor Of Arts (B.A) </p>
-                        </div>
-
-                        <div class="education-details">
-                            <h5>Kalyangarh Girls (H.S)</h5>
-                            <span>2017-2019</span>
-                            <p>Higher Secondary Of Bio-Science (W.B.C.H.S.E)</p>
-                        </div>
-
-                        <div class="education-details">
-                            <h5>Hatthuba Kalibala Kannya Vidyapith (H.S)</h5>
-                            <span>2017</span>
-                            <p>Secondary Education (W.B.B.S.E) </p>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
+        <div class="hero-badge">
+          <div class="badge-dot"></div>
+          Open to opportunities
         </div>
-    </section>
-    <!-- education end -->
-
-    <!-- contact-section start -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">contact me</h2>
-                <p>Let's connect and discuss opportunities.</p>
-            </div>
-
-            <div class="row align-items-start">
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="lt-block">
-                        <div class="sub-title">
-                            <h3>Let’s talk about
-                                <em>Your Next Projects</em>
-                            </h3>
-                            <p>Looking for opportunities where I can contribute my skills and
-                                grow as a developer and designer.</p>
-                        </div>
-
-                        <div class="icon-block d-flex align-items-center gap-3">
-                            <img src="./assets/images/phone-logo.png" alt="phone" class="img-fluid" />
-                            <span>(+91)852136560</span>
-                        </div>
-
-                        <div class="icon-block d-flex align-items-center gap-3">
-                            <img src="./assets/images/email-logo.png" alt="email" class="img-fluid" />
-                            <span>doyeldoyel00@gmail.com</span>
-                        </div>
-
-                        <div class="icon-block d-flex align-items-center gap-3">
-                            <img src="./assets/images/map-logo.png" alt="map" class="img-fluid" />
-                            <span>Barasat, Kolkata, West Bengal</span>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="col-lg-8 col-md-6 col-sm-12">
-                    <div class="rt-block">
-                        <form autocomplete="off" id="form">
-                            <!-- Replace with your Access Key -->
-                            <input type="hidden" name="access_key" value="fcafee20-a8c2-4456-80eb-5c960b3acd1f">
-                            <input type="hidden" name="from_name" value="New Email From My Portfolio">
-                            <div class="row justify-content-between">
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="input-group">
-                                        <label for="first name">first name</label>
-                                        <input type="text" placeholder="first name" class="form-control" id="first-name"
-                                            name="firstname" required />
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="input-group">
-                                        <label for="last name">last name</label>
-                                        <input type="text" placeholder="last name" class="form-control" id="last-name"
-                                            name="lastname" required />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-dm-12">
-                                    <div class="input-group">
-                                        <label for="email">email</label>
-                                        <input type="text" placeholder="example@mail.com" class="form-control"
-                                            id="email" name="email" required />
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-dm-12">
-                                    <div class="input-group">
-                                        <label for="phone">phone</label>
-                                        <input type="tel" placeholder="9874563210" class="form-control" id="phone"
-                                            name="phone" required />
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="input-group">
-                                    <label for="subject"> subject</label>
-                                    <input type="text" placeholder="your subject" name="subject" class="form-control"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="input-group">
-                                    <label for="your message"> your message</label>
-                                    <textarea name="message" id="message" placeholder="write your note"
-                                        class="form-control"></textarea>
-                                </div>
-                            </div>
-
-                            <input type="submit" value="submit" class="submit-btn">
-                            <div id="result" class="text-white"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="float-card float-card2">
+          <div class="float-card-label">Based in</div>
+          <div class="float-card-val">📍 Habra, West Bengal</div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
 
-    </section>
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-img-frame">
+          <div class="about-img-placeholder">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="about-img-overlay"></div>
+        </div>
+      </div>
+      <div class="about-body fade-up">
+        <p class="section-label">Who I am</p>
+        <h2 class="section-title-big display">Designer who also <em>codes</em></h2>
+        <div class="about-tags">
+          <span class="chip accent">UI/UX</span>
+          <span class="chip mint">Graphic Design</span>
+          <span class="chip gold">Front-End</span>
+          <span class="chip">WordPress</span>
+          <span class="chip">Branding</span>
+        </div>
+        <p>I'm <strong style="color:var(--white)">Doyel Roy</strong>, a creative designer and front-end developer from Habra, West Bengal. My strength lies at the intersection of beautiful design and functional code — I don't just make things look good, I make them work.</p>
+        <p>I specialize in UI/UX design, graphic design, and front-end development. With hands-on training in design tools like Photoshop, Illustrator, and Figma, alongside coding skills in HTML, CSS, Bootstrap, JavaScript, jQuery, PHP &amp; MySQL, and WordPress — I bring a full-stack creative perspective to every project.</p>
+        <p>Currently seeking roles as a <strong style="color:var(--text)">UI/UX Designer</strong>, <strong style="color:var(--text)">Graphic Designer</strong>, or <strong style="color:var(--text)">Web Designer</strong> where I can contribute visually and technically.</p>
+        <div class="highlight-box">
+          <p>💡 I believe great design is invisible — it guides users naturally, communicates clearly, and feels effortless. My goal is to build experiences people love using.</p>
+        </div>
+        <div class="about-services">
+          <div class="service-pill"><span class="service-icon">🎨</span>UI/UX Design</div>
+          <div class="service-pill"><span class="service-icon">🖼️</span>Graphic Design</div>
+          <div class="service-pill"><span class="service-icon">📐</span>Wireframing</div>
+          <div class="service-pill"><span class="service-icon">🌐</span>Web Design</div>
+          <div class="service-pill"><span class="service-icon">💻</span>Front-End Dev</div>
+          <div class="service-pill"><span class="service-icon">🔧</span>WordPress</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer Start -->
-    <footer>
-        <div class="container">
-            <div class="connect">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6 col-sm-6">
-                        <div class="sub-title">
-                            <h5>Let’s <em>connect</em> there</h5>
-                        </div>
-                    </div>
+<!-- ══ SKILLS ══ -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="fade-up">
+      <p class="section-label">My Toolkit</p>
+      <h2 class="section-title-big display">Skills &amp; <em>Expertise</em></h2>
+      <p style="color:var(--muted);max-width:560px;">A combination of design sensibility and technical ability — I can take a product from concept to code.</p>
+    </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-6 text-end">
+    <div class="skills-categories">
+      <!-- Design -->
+      <div class="skill-cat cat-design fade-up">
+        <div class="skill-cat-icon">🎨</div>
+        <h4>Design & Creative</h4>
+        <p class="sub">Visual design, branding &amp; UI</p>
+        <ul class="skill-list">
+          <li><span class="name">Photoshop</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".85"></div></div></li>
+          <li><span class="name">Illustrator</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".75"></div></div></li>
+          <li><span class="name">Figma</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".80"></div></div></li>
+          <li><span class="name">UI/UX Design</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".78"></div></div></li>
+          <li><span class="name">Wireframing</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".75"></div></div></li>
+        </ul>
+      </div>
+      <!-- Front-End -->
+      <div class="skill-cat cat-front fade-up">
+        <div class="skill-cat-icon">💻</div>
+        <h4>Front-End Development</h4>
+        <p class="sub">Responsive &amp; interactive UI</p>
+        <ul class="skill-list">
+          <li><span class="name">HTML5</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".90"></div></div></li>
+          <li><span class="name">CSS3</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".88"></div></div></li>
+          <li><span class="name">Bootstrap</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".85"></div></div></li>
+          <li><span class="name">JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".72"></div></div></li>
+          <li><span class="name">jQuery</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".78"></div></div></li>
+        </ul>
+      </div>
+      <!-- Back-End / CMS -->
+      <div class="skill-cat cat-back fade-up">
+        <div class="skill-cat-icon">⚙️</div>
+        <h4>Back-End & CMS</h4>
+        <p class="sub">Dynamic sites &amp; platforms</p>
+        <ul class="skill-list">
+          <li><span class="name">PHP</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".60"></div></div></li>
+          <li><span class="name">MySQL</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".58"></div></div></li>
+          <li><span class="name">WordPress</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".72"></div></div></li>
+          <li><span class="name">Responsive Design</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".88"></div></div></li>
+          <li><span class="name">Social Media Design</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".82"></div></div></li>
+        </ul>
+      </div>
+    </div>
 
-                        <a href="#" class="site-btn">hire me!</a>
+    <div class="tools-grid fade-up" style="margin-top:2.5rem;">
+      <span class="section-label" style="width:100%">All Tools &amp; Technologies</span>
+      <span class="tool-chip">Photoshop</span>
+      <span class="tool-chip">Illustrator</span>
+      <span class="tool-chip">Figma</span>
+      <span class="tool-chip">HTML5</span>
+      <span class="tool-chip">CSS3</span>
+      <span class="tool-chip">Bootstrap 5</span>
+      <span class="tool-chip">JavaScript</span>
+      <span class="tool-chip">jQuery</span>
+      <span class="tool-chip">PHP</span>
+      <span class="tool-chip">MySQL</span>
+      <span class="tool-chip">WordPress</span>
+      <span class="tool-chip">Wireframing</span>
+      <span class="tool-chip">Prototyping</span>
+      <span class="tool-chip">Brand Identity</span>
+      <span class="tool-chip">Social Media Design</span>
+      <span class="tool-chip">Poster Design</span>
+      <span class="tool-chip">Logo Design</span>
+      <span class="tool-chip">Responsive Design</span>
+    </div>
+  </div>
+</section>
 
-                    </div>
-                </div>
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="container">
+    <div class="fade-up">
+      <p class="section-label">What I Offer</p>
+      <h2 class="section-title-big display">Services I <em>provide</em></h2>
+      <p style="color:var(--muted);max-width:520px;">From design concepts to live websites — here's how I can help your brand stand out.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <span class="service-emoji">🎨</span>
+        <div class="service-num">01</div>
+        <h3>UI/UX Design</h3>
+        <p>User research, wireframing, prototyping, and high-fidelity UI design in Figma. Creating intuitive, beautiful interfaces that put users first.</p>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-emoji">🖼️</span>
+        <div class="service-num">02</div>
+        <h3>Graphic Design</h3>
+        <p>Logos, posters, banners, social media creatives, and brand identity. Visual communication with purpose — designed in Photoshop &amp; Illustrator.</p>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-emoji">🌐</span>
+        <div class="service-num">03</div>
+        <h3>Web Design &amp; Development</h3>
+        <p>Pixel-perfect, responsive websites using HTML, CSS, Bootstrap, and JavaScript. Design and code delivered together for a seamless experience.</p>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-emoji">📐</span>
+        <div class="service-num">04</div>
+        <h3>Wireframing &amp; Prototyping</h3>
+        <p>Low-fidelity to high-fidelity wireframes and interactive prototypes. Helping you validate ideas before a single line of code is written.</p>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-emoji">🔧</span>
+        <div class="service-num">05</div>
+        <h3>WordPress Development</h3>
+        <p>Custom WordPress websites with theme customization, plugin integration, and dynamic, user-friendly CMS setups for your business.</p>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-emoji">📱</span>
+        <div class="service-num">06</div>
+        <h3>Social Media Design</h3>
+        <p>Eye-catching social media posts, stories, and creatives for Instagram, Facebook, and LinkedIn — on-brand and scroll-stopping.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══ PORTFOLIO ══ -->
+<section id="portfolio" style="background:var(--surface);">
+  <div class="container">
+    <div class="fade-up">
+      <p class="section-label">My Work</p>
+      <h2 class="section-title-big display">Selected <em>Projects</em></h2>
+    </div>
+    <div class="portfolio-filter">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="design">UI/UX Design</button>
+      <button class="filter-btn" data-filter="web">Web Dev</button>
+      <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+    </div>
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card featured fade-up" data-cat="design">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(124,111,247,.2),rgba(192,132,252,.15));">
+          <span style="font-size:4rem;">📱</span>
+          <div class="project-overlay">
+            <a href="#" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;">Live Demo</a>
+            <a href="#" class="btn btn-ghost" style="font-size:.82rem;padding:.6rem 1.2rem;">GitHub</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="chip accent">App Design</span>
+            <span class="chip mint">UI/UX Design</span>
+            <span class="chip">Wireframe</span>
+          </div>
+          <h3>UI/UX Design — App Solution</h3>
+          <p>A complete UI/UX design project including wireframes, user flows, and high-fidelity prototypes. Focused on creating intuitive, accessible, and visually refined mobile app interfaces.</p>
+        </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="project-card fade-up" data-cat="web">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(94,234,212,.15),rgba(124,111,247,.1));">
+          <span style="font-size:3rem;">🌿</span>
+          <div class="project-overlay">
+            <a href="https://doyelroydeveloper.github.io/botanic/" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;" target="_blank">Live Demo</a>
+            <a href="#" class="btn btn-ghost" style="font-size:.82rem;padding:.6rem 1.2rem;">GitHub</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="chip mint">Web Design</span>
+            <span class="chip">UI/UX</span>
+            <span class="chip gold">HTML/CSS</span>
+          </div>
+          <h3>Botanic — Plant Website &amp; Design</h3>
+          <p>A responsive plant e-commerce website featuring clean design, smooth layouts, and a fresh color palette. Built with HTML, CSS, and JavaScript with a focus on visual storytelling.</p>
+        </div>
+      </div>
+      <!-- Project 3 -->
+      <div class="project-card fade-up" data-cat="graphic">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(192,132,252,.1));">
+          <span style="font-size:3rem;">🖼️</span>
+          <div class="project-overlay">
+            <a href="#" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;">View Work</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="chip gold">Graphic Design</span>
+            <span class="chip">Branding</span>
+            <span class="chip">Social Media</span>
+          </div>
+          <h3>Brand & Social Media Creatives</h3>
+          <p>A collection of graphic design work including posters, banners, logos, and social media creatives. Focused on clean aesthetics and strong visual communication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══ EDUCATION & TRAINING ══ -->
+<section class="edu-section" id="education">
+  <div class="container">
+    <div class="fade-up">
+      <p class="section-label">My Journey</p>
+      <h2 class="section-title-big display">Education &amp; <em>Training</em></h2>
+    </div>
+    <div class="edu-columns" style="margin-top:3rem;">
+      <!-- Training -->
+      <div>
+        <div class="edu-col-label">🎓 Professional Training</div>
+        <div class="timeline">
+          <div class="timeline-item training-item fade-up">
+            <div class="timeline-date">2025 — 2026 · 1 Year</div>
+            <h4>Creative Designer &amp; Front-End Developer</h4>
+            <div class="inst">Learn Computer Academy, Habra</div>
+            <ul class="timeline-bullets">
+              <li>Completed intensive training in design and front-end technologies</li>
+              <li>Learned industry-standard software: Photoshop, Illustrator, Figma</li>
+              <li>Worked on real-world design and web development projects</li>
+              <li>Mastered web fundamentals: HTML, CSS, Bootstrap, JavaScript, jQuery</li>
+              <li>Gained exposure to PHP, MySQL, and WordPress development</li>
+            </ul>
+          </div>
+          <div class="timeline-item training-item fade-up">
+            <div class="timeline-date">Ongoing</div>
+            <h4>Back-End Development</h4>
+            <div class="inst">Additional Learning</div>
+            <ul class="timeline-bullets">
+              <li>Back-End Development using PHP &amp; MySQL (in progress)</li>
+              <li>Continuing to expand full-stack capabilities</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Education -->
+      <div>
+        <div class="edu-col-label">📚 Academic Education</div>
+        <div class="timeline">
+          <div class="timeline-item fade-up">
+            <div class="timeline-date">2019 — 2022</div>
+            <h4>Bachelor of Arts (B.A)</h4>
+            <div class="inst">SC College Science &amp; Arts</div>
+          </div>
+          <div class="timeline-item fade-up">
+            <div class="timeline-date">2017 — 2019</div>
+            <h4>Higher Secondary — Bio-Science</h4>
+            <div class="inst">Kalyangarh Girls (H.S) · W.B.C.H.S.E</div>
+          </div>
+          <div class="timeline-item fade-up">
+            <div class="timeline-date">2017</div>
+            <h4>Secondary Education</h4>
+            <div class="inst">Hatthuba Kalibala Kannya Vidyapith · W.B.B.S.E</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-up text-center" style="text-align:center;">
+      <p class="section-label" style="justify-content:center;">Get In Touch</p>
+      <h2 class="section-title-big display">Let's work <em>together</em></h2>
+      <p style="color:var(--muted);max-width:480px;margin:0 auto 1rem;">Looking for opportunities in design &amp; development. Open to full-time roles, freelance projects, and internships.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3 class="display">Say hello 👋</h3>
+        <p>I'm actively seeking roles as a UI/UX Designer, Graphic Designer, or Web Designer. Let's connect and discuss your next project.</p>
+        <div class="contact-links">
+          <a href="tel:+918101134686" class="contact-link">
+            <div class="contact-link-icon">📞</div>
+            (+91) 8101134686
+          </a>
+          <a href="mailto:roydoyel764@gmail.com" class="contact-link">
+            <div class="contact-link-icon">📧</div>
+            roydoyel764@gmail.com
+          </a>
+          <a href="#" class="contact-link">
+            <div class="contact-link-icon">📍</div>
+            Habra, Barasat, North 24 Pgs, West Bengal
+          </a>
+          <a href="#" class="contact-link">
+            <div class="contact-link-icon" style="background:rgba(94,234,212,.12);color:var(--mint);">💼</div>
+            LinkedIn Profile
+          </a>
+        </div>
+        <div style="margin-top:2rem;">
+          <p class="section-label">Languages</p>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
+            <span class="chip">Hindi</span>
+            <span class="chip">Bengali</span>
+            <span class="chip">English</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <form id="contactForm" autocomplete="off" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="fcafee20-a8c2-4456-80eb-5c960b3acd1f" />
+          <input type="hidden" name="from_name" value="New Email From My Portfolio" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" name="firstname" placeholder="First name" required />
             </div>
-            <div class="content ">
-                <div class="row align-items-start">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-
-                        <img src="./assets/images/my-logo.png" alt="my-logo" class="img-fluid" />
-
-                        <p class="text">I develop modern, responsive websites using HTML, CSS,
-                            JavaScript,and WordPress.</p>
-
-                        <div class="d-flex gap-3 align-items-center">
-
-                            <img src="./assets/images/facebook-logo.png" alt="facebook" />
-                            <img src="./assets/images/instagram-logo3.png" alt="instagram-logo" />
-                            <img src="./assets/images/linkedin-logo.png" alt="linkedin-logo" />
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="title">
-                            <h5>quick links</h5>
-                        </div>
-                        <nav>
-                            <ul>
-                                <li><a href="#">about</a></li>
-                                <li><a href="#">skills</a></li>
-                                <li><a href="#">projects</a></li>
-                                <li><a href="#">contact me</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="title">
-                            <h5>contact</h5>
-                        </div>
-                        <p class="mt-3">(+91)852136560</p>
-                        <p class="text-lowercase">doyeldoyel00@gmail.com</p>
-                        <p class="d-block">Barasat,Kolkata,West Bengal</p>
-                    </div>
-                </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="lastname" placeholder="Last name" required />
             </div>
-        </div>
-        </div>
-        <div class="copy-right">
-            <p class="text-center py-3 fw-normal fs-5">Copyright © 2026 Doyel. All Rights Reserved.</p>
-        </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" name="phone" placeholder="Phone number" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>I'm looking for</label>
+            <select name="subject">
+              <option value="">Select a service...</option>
+              <option>UI/UX Designer</option>
+              <option>Graphic Designer</option>
+              <option>Web Designer</option>
+              <option>Front-End Developer</option>
+              <option>WordPress Developer</option>
+              <option>Freelance Project</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="Tell me about your project or opportunity..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message ✉️</button>
+          <div id="form-result"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </footer>
-    <!-- Footer End -->
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" style="font-size:1.6rem;">Doyel<span>.</span></a>
+        <p>Creative designer &amp; front-end developer crafting beautiful digital experiences from Habra, West Bengal.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" title="Facebook">f</a>
+          <a href="#" class="social-btn" title="Instagram">in</a>
+          <a href="#" class="social-btn" title="LinkedIn">Li</a>
+          <a href="#" class="social-btn" title="GitHub">gh</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+918101134686">(+91) 8101134686</a></li>
+          <li><a href="mailto:roydoyel764@gmail.com">roydoyel764@gmail.com</a></li>
+          <li><a href="#">Habra, Barasat, WB</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Doyel Roy. All rights reserved.</span>
+      <span>Designed &amp; Developed by <strong style="color:var(--accent)">Doyel Roy</strong></span>
+    </div>
+  </div>
+</footer>
 
-    <!-- App JS -->
-    <script src="./assets/js/app.js"></script>
+<script>
+  // ── Nav scroll ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ── Hamburger ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', () => mobileMenu.classList.remove('open'));
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  // ── Intersection Observer for fade-up + skill bars ──
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Skill bars
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          bar.style.transform = `scaleX(${bar.dataset.width})`;
+          bar.classList.add('animated');
+        });
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-cat').forEach(el => barObs.observe(el));
+
+  // ── Portfolio filter ──
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card => {
+        if (filter === 'all' || card.dataset.cat === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ── Contact form ──
+  const contactForm = document.getElementById('contactForm');
+  const formResult = document.getElementById('form-result');
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type=submit]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(contactForm)
+      });
+      const data = await res.json();
+      if (data.success) {
+        formResult.innerHTML = '<p style="color:var(--mint);margin-top:.75rem;">✅ Message sent! I\'ll get back to you soon.</p>';
+        contactForm.reset();
+      } else {
+        formResult.innerHTML = '<p style="color:#f87171;margin-top:.75rem;">Something went wrong. Please email me directly.</p>';
+      }
+    } catch {
+      formResult.innerHTML = '<p style="color:#f87171;margin-top:.75rem;">Network error. Please try again.</p>';
+    }
+    btn.textContent = 'Send Message ✉️';
+    btn.disabled = false;
+  });
+
+  // ── Smooth active nav on scroll ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--white)' : '';
+    });
+  });
+</script>
 </body>
-
 </html>
-
-
-
-
-<!-- https://web3forms.com/ -->
