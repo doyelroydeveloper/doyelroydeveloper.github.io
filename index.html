@@ -1,553 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Doyel Roy | Designer & Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
 
-<!-- Background orbs -->
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
+  <!-- Background orbs -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" id="mobileClose">&times;</button>
-  <a href="#hero" onclick="closeMobile()">Home</a>
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#skills" onclick="closeMobile()">Skills</a>
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#portfolio" onclick="closeMobile()">Projects</a>
-  <a href="#education" onclick="closeMobile()">Education</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
-</div>
-
-<!-- ══ NAV ══ -->
-<nav class="main-nav" id="mainNav">
-  <div class="container nav-inner">
-    <a href="#hero" class="nav-logo">Doyel<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <a href="#contact" class="btn btn-primary" style="padding:.6rem 1.25rem;font-size:.85rem;">Hire Me</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">&times;</button>
+    <a href="#hero" onclick="closeMobile()">Home</a>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#skills" onclick="closeMobile()">Skills</a>
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#portfolio" onclick="closeMobile()">Projects</a>
+    <a href="#education" onclick="closeMobile()">Education</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
   </div>
-</nav>
 
-<!-- ══ HERO ══ -->
-<section class="hero" id="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Available for freelance &amp; full-time</p>
-        <h1 class="hero-name display">
-          Doyel<br><span class="last">Roy</span>
-        </h1>
-        <div class="hero-roles">
-          <span class="chip accent">UI/UX Designer</span>
-          <span class="chip mint">Graphic Designer</span>
-          <span class="chip gold">Front-End Developer</span>
-          <span class="chip">WordPress Dev</span>
-        </div>
-        <p class="hero-desc">
-          Creative designer &amp; developer crafting beautiful, user-centered digital experiences — from wireframes to pixel-perfect interfaces and clean, responsive code.
-        </p>
-        <div class="hero-cta">
-          <a href="./assets/images/doyel-roy-resume" download="doyel-roy-resume" class="btn btn-primary">
-            ↓ Download CV
-          </a>
-          <a href="#portfolio" class="btn btn-outline">View Projects</a>
-        </div>
-        <div class="hero-stats">
-          <div>
-            <div class="stat-num">1<span>+</span></div>
-            <div class="stat-label">Year Training</div>
-          </div>
-          <div>
-            <div class="stat-num">7<span>+</span></div>
-            <div class="stat-label">Tools Mastered</div>
-          </div>
-          <div>
-            <div class="stat-num">2<span>+</span></div>
-            <div class="stat-label">Live Projects</div>
-          </div>
-        </div>
+  <!-- ══ NAV ══ -->
+  <nav class="main-nav" id="mainNav">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">Doyel<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#contact" class="btn btn-primary" style="padding:.6rem 1.25rem;font-size:.85rem;">Hire Me</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+    </div>
+  </nav>
 
-      <div class="hero-image-wrap">
-        <div class="float-card float-card1">
-          <div class="float-card-label">Primary Role</div>
-          <div class="float-card-val"><i class="bi bi-brush"></i> UI/UX Designer</div>
-        </div>
-        <div class="hero-image-card">
-          <div class="hero-image-placeholder">
-            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            <img src="./assets/images/doyel-roy.jpg" alt="Doyel Roy — Web Designer and Developer" class="img-fluid" />
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Available for freelance &amp; full-time</p>
+          <h1 class="hero-name display">
+            Doyel<br><span class="last">Roy</span>
+          </h1>
+          <div class="hero-roles">
+            <span class="chip accent">UI/UX Designer</span>
+            <span class="chip mint">Graphic Designer</span>
+            <span class="chip gold">Front-End Developer</span>
+            <span class="chip">WordPress Dev</span>
+          </div>
+          <p class="hero-desc">
+            Creative designer &amp; developer crafting beautiful, user-centered digital experiences — from wireframes to
+            pixel-perfect interfaces and clean, responsive code.
+          </p>
+          <div class="hero-cta">
+            <a href="./assets/images/doyel-roy-resume" download="doyel-roy-resume" class="btn btn-primary">
+              ↓ Download CV
+            </a>
+            <a href="#portfolio" class="btn btn-outline">View Projects</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">1<span>+</span></div>
+              <div class="stat-label">Year Training</div>
+            </div>
+            <div>
+              <div class="stat-num">7<span>+</span></div>
+              <div class="stat-label">Tools Mastered</div>
+            </div>
+            <div>
+              <div class="stat-num">2<span>+</span></div>
+              <div class="stat-label">Live Projects</div>
+            </div>
           </div>
         </div>
-        <div class="hero-badge">
-          <div class="badge-dot"></div>
-          Open to opportunities
-        </div>
-        <div class="float-card float-card2">
-          <div class="float-card-label">Based in</div>
-          <div class="float-card-val"><i class="bi bi-geo-alt"></i> Habra, West Bengal</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-hint-line"></div>
-    <span>scroll</span>
-  </div>
-</section>
 
-<!-- ══ ABOUT ══ -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-visual">
-        <div class="about-img-frame">
-          <div class="about-img-placeholder">
-            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <div class="hero-image-wrap">
+          <div class="float-card float-card1">
+            <div class="float-card-label">Primary Role</div>
+            <div class="float-card-val"><i class="bi bi-brush"></i> UI/UX Designer</div>
           </div>
-          <div class="about-img-overlay">
-            <img src="./assets/images/doyel-roy.jpg" alt="Doyel Roy — Web Designer and Developer" >
+          <div class="hero-image-card">
+            <div class="hero-image-placeholder">
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+              </svg>
+              <img src="./assets/images/doyel-roy.jpg" alt="Doyel Roy — Web Designer and Developer" class="img-fluid" />
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="about-body fade-up">
-        <p class="section-label">Who I am</p>
-        <h2 class="section-title-big display">Designer who also <em>codes</em></h2>
-        <div class="about-tags">
-          <span class="chip accent">UI/UX</span>
-          <span class="chip mint">Graphic Design</span>
-          <span class="chip gold">Front-End</span>
-          <span class="chip">WordPress</span>
-          <span class="chip">Branding</span>
-        </div>
-        <p>I'm <strong style="color:var(--white)">Doyel Roy</strong>, a creative designer and front-end developer from Habra, West Bengal. My strength lies at the intersection of beautiful design and functional code — I don't just make things look good, I make them work.</p>
-        <p>I specialize in UI/UX design, graphic design, and front-end development. With hands-on training in design tools like Photoshop,and Figma, alongside coding skills in HTML, CSS, Bootstrap, JavaScript, jQuery, PHP &amp; MySQL, and WordPress — I bring a full-stack creative perspective to every project.</p>
-        <p>Currently seeking roles as a <strong style="color:var(--text)">UI/UX Designer</strong>, <strong style="color:var(--text)">Graphic Designer</strong>, or <strong style="color:var(--text)">Web Designer</strong> where I can contribute visually and technically.</p>
-        <div class="highlight-box">
-          <p>💡 I believe great design is invisible — it guides users naturally, communicates clearly, and feels effortless. My goal is to build experiences people love using.</p>
-        </div>
-        <div class="about-services">
-          <div class="service-pill"><span class="service-icon"><i class="bi bi-brush"></i></span>UI/UX Design</div>
-          <div class="service-pill"><span class="service-icon"><i class="bi bi-wordpress"></i></span>Graphic Design</div>
-          <div class="service-pill"><span class="service-icon"><i class="bi bi-rulers"></i></span>Wireframing</div>
-          <div class="service-pill"><span class="service-icon"><i class="bi bi-pc-display"></i></span>Web Design</div>
-          <div class="service-pill"><span class="service-icon"><i class="bi bi-pc-display"></i></span>Front-End Dev</div>
-          <div class="service-pill"><span class="service-icon"><i class="bi bi-wordpress"></i></span>WordPress</div>
+          <div class="hero-badge">
+            <div class="badge-dot"></div>
+            Open to opportunities
+          </div>
+          <div class="float-card float-card2">
+            <div class="float-card-label">Based in</div>
+            <div class="float-card-val"><i class="bi bi-geo-alt"></i> Habra, West Bengal</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="scroll-hint">
+      <div class="scroll-hint-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
 
-<!-- ══ SKILLS ══ -->
-<section class="skills-section" id="skills">
-  <div class="container">
-    <div class="fade-up">
-      <p class="section-label">My Toolkit</p>
-      <h2 class="section-title-big display">Skills &amp; <em>Expertise</em></h2>
-      <p style="color:var(--muted);max-width:560px;">A combination of design sensibility and technical ability — I can take a product from concept to code.</p>
-    </div>
-
-    <div class="skills-categories">
-      <!-- Design -->
-      <div class="skill-cat cat-design fade-up">
-        <div class="skill-cat-icon"><i class="bi bi-brush-fill"></i></div>
-        <h4>Design & Creative</h4>
-        <p class="sub">Visual design, branding &amp; UI</p>
-        <ul class="skill-list">
-          <li><span class="name">Photoshop</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".85"></div></div></li>
-          <!-- <li><span class="name">Illustrator</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".75"></div></div></li> -->
-          <li><span class="name">Figma</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".80"></div></div></li>
-          <li><span class="name">UI/UX Design</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".78"></div></div></li>
-          <li><span class="name">Wireframing</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".75"></div></div></li>
-        </ul>
-      </div>
-      <!-- Front-End -->
-      <div class="skill-cat cat-front fade-up">
-        <div class="skill-cat-icon"><i class="bi bi-pc-display-horizontal"></i></div>
-        <h4>Front-End Development</h4>
-        <p class="sub">Responsive &amp; interactive UI</p>
-        <ul class="skill-list">
-          <li><span class="name">HTML5</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".90"></div></div></li>
-          <li><span class="name">CSS3</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".88"></div></div></li>
-          <li><span class="name">Bootstrap</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".85"></div></div></li>
-          <li><span class="name">JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".72"></div></div></li>
-          <li><span class="name">jQuery</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".78"></div></div></li>
-        </ul>
-      </div>
-      <!-- Back-End / CMS -->
-      <div class="skill-cat cat-back fade-up">
-        <div class="skill-cat-icon"><i class="bi bi-database-fill"></i></div>
-        <h4>Back-End & CMS</h4>
-        <p class="sub">Dynamic sites &amp; platforms</p>
-        <ul class="skill-list">
-          <li><span class="name">PHP</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".60"></div></div></li>
-          <li><span class="name">MySQL</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".58"></div></div></li>
-          <li><span class="name">WordPress</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".72"></div></div></li>
-          <li><span class="name">Responsive Design</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".88"></div></div></li>
-          <li><span class="name">Social Media Design</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".82"></div></div></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="tools-grid fade-up" style="margin-top:2.5rem;">
-      <span class="section-label" style="width:100%">All Tools &amp; Technologies</span>
-      <span class="tool-chip">Photoshop</span>
-      <!-- <span class="tool-chip">Illustrator</span> -->
-      <span class="tool-chip">Figma</span>
-      <span class="tool-chip">HTML5</span>
-      <span class="tool-chip">CSS3</span>
-      <span class="tool-chip">Bootstrap 5</span>
-      <span class="tool-chip">JavaScript</span>
-      <span class="tool-chip">jQuery</span>
-      <span class="tool-chip">PHP</span>
-      <span class="tool-chip">MySQL</span>
-      <span class="tool-chip">WordPress</span>
-      <span class="tool-chip">Wireframing</span>
-      <span class="tool-chip">Prototyping</span>
-      <span class="tool-chip">Brand Identity</span>
-      <span class="tool-chip">Social Media Design</span>
-      <span class="tool-chip">Poster Design</span>
-      <span class="tool-chip">Logo Design</span>
-      <span class="tool-chip">Responsive Design</span>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SERVICES ══ -->
-<section id="services">
-  <div class="container">
-    <div class="fade-up">
-      <p class="section-label">What I Offer</p>
-      <h2 class="section-title-big display">Services I <em>provide</em></h2>
-      <p style="color:var(--muted);max-width:520px;">From design concepts to live websites — here's how I can help your brand stand out.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card fade-up">
-        <span class="service-emoji"></span>
-        <div class="service-num">01</div>
-        <h3>UI/UX Design</h3>
-        <p>User research, wireframing, prototyping, and high-fidelity UI design in Figma. Creating intuitive, beautiful interfaces that put users first.</p>
-      </div>
-      <div class="service-card fade-up">
-        <span class="service-emoji"></span>
-        <div class="service-num">02</div>
-        <h3>Graphic Design</h3>
-        <p>Logos, posters, banners, social media creatives, and brand identity. Visual communication with purpose — designed in Photoshop &amp; Illustrator.</p>
-      </div>
-      <div class="service-card fade-up">
-        <span class="service-emoji"></span>
-        <div class="service-num">03</div>
-        <h3>Web Design &amp; Development</h3>
-        <p>Pixel-perfect, responsive websites using HTML, CSS, Bootstrap, and JavaScript. Design and code delivered together for a seamless experience.</p>
-      </div>
-      <div class="service-card fade-up">
-        <span class="service-emoji"></span>
-        <div class="service-num">04</div>
-        <h3>Wireframing &amp; Prototyping</h3>
-        <p>Low-fidelity to high-fidelity wireframes and interactive prototypes. Helping you validate ideas before a single line of code is written.</p>
-      </div>
-      <div class="service-card fade-up">
-        <span class="service-emoji"></span>
-        <div class="service-num">05</div>
-        <h3>WordPress Development</h3>
-        <p>Custom WordPress websites with theme customization, plugin integration, and dynamic, user-friendly CMS setups for your business.</p>
-      </div>
-      <div class="service-card fade-up">
-        <span class="service-emoji"></span>
-        <div class="service-num">06</div>
-        <h3>Social Media Design</h3>
-        <p>Eye-catching social media posts, stories, and creatives for Instagram, Facebook, and LinkedIn — on-brand and scroll-stopping.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PORTFOLIO ══ -->
-<section id="portfolio" style="background:var(--surface);">
-  <div class="container">
-    <div class="fade-up">
-      <p class="section-label">My Work</p>
-      <h2 class="section-title-big display">Selected <em>Projects</em></h2>
-    </div>
-    <div class="portfolio-filter">
-      <button class="filter-btn active" data-filter="all">All Projects</button>
-      <button class="filter-btn" data-filter="design">UI/UX Design</button>
-      <button class="filter-btn" data-filter="web">Web Dev</button>
-      <button class="filter-btn" data-filter="graphic">Graphic Design</button>
-    </div>
-    <div class="projects-grid">
-      <!-- Project 1 -->
-      <div class="project-card featured fade-up" data-cat="design">
-        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(124,111,247,.2),rgba(192,132,252,.15));">
-          <span style="font-size:4rem;">📱</span>
-          <div class="project-overlay">
-            <img src="./assets/images/design-1.jpg" alt="design-1" class="img-fluid"/>
-            <a href="#" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;">Live Demo</a>
-            <a href="#" class="btn btn-ghost" style="font-size:.82rem;padding:.6rem 1.2rem;">GitHub</a>
+  <!-- ══ ABOUT ══ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-img-frame">
+            <div class="about-img-placeholder">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                opacity=".3">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+            </div>
+            <div class="about-img-overlay">
+              <img src="./assets/images/doyel-roy.jpg" alt="Doyel Roy — Web Designer and Developer">
+            </div>
           </div>
         </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="chip accent">App Design</span>
-            <span class="chip mint">UI/UX Design</span>
-            <span class="chip">Wireframe</span>
-          </div>
-          <h3>UI/UX Design — App Solution</h3>
-          <p>A complete UI/UX design project including wireframes, user flows, and high-fidelity prototypes. Focused on creating intuitive, accessible, and visually refined mobile app interfaces.</p>
-        </div>
-      </div>
-      <!-- Project 2 -->
-      <div class="project-card fade-up" data-cat="web">
-        <div class="project-thumb">
-          <img src="./assets/images/botanic.jpg" alt="botanic" class="img-fit">
-          <!-- <span style="font-size:3rem;">🌿</span> -->
-          <div class="project-overlay">
-            <a href="https://doyelroydeveloper.github.io/botanic/" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;" target="_blank">Live Demo</a>
-            <a href="#" class="btn btn-ghost" style="font-size:.82rem;padding:.6rem 1.2rem;">GitHub</a>
-          </div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="chip mint">Web Design</span>
-            <span class="chip gold">UI/UX</span>
-          </div>
-          <h3>Botanic — Plant Website &amp; Design</h3>
-          <p>A  plant e-commerce website featuring clean design, smooth layouts, and a fresh color palette.</p>
-        </div>
-      </div>
-      <!-- Project 3 -->
-      <div class="project-card fade-up" data-cat="graphic">
-        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(192,132,252,.1));">
-          <span style="font-size:3rem;">🖼️</span>
-          <div class="project-overlay">
-            <a href="#" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;">View Work</a>
-          </div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="chip gold">Graphic Design</span>
+        <div class="about-body fade-up">
+          <p class="section-label">Who I am</p>
+          <h2 class="section-title-big display">Designer who also <em>codes</em></h2>
+          <div class="about-tags">
+            <span class="chip accent">UI/UX</span>
+            <span class="chip mint">Graphic Design</span>
+            <span class="chip gold">Front-End</span>
+            <span class="chip">WordPress</span>
             <span class="chip">Branding</span>
-            <span class="chip">Social Media</span>
           </div>
-          <h3>Brand & Social Media Creatives</h3>
-          <p>A collection of graphic design work including posters, banners, logos, and social media creatives. Focused on clean aesthetics and strong visual communication.</p>
+          <p>I'm <strong style="color:var(--white)">Doyel Roy</strong>, a creative designer and front-end developer from
+            Habra, West Bengal. My strength lies at the intersection of beautiful design and functional code — I don't
+            just make things look good, I make them work.</p>
+          <p>I specialize in UI/UX design, graphic design, and front-end development. With hands-on training in design
+            tools like Photoshop,and Figma, alongside coding skills in HTML, CSS, Bootstrap, JavaScript, jQuery, PHP
+            &amp; MySQL, and WordPress — I bring a full-stack creative perspective to every project.</p>
+          <p>Currently seeking roles as a <strong style="color:var(--text)">UI/UX Designer</strong>, <strong
+              style="color:var(--text)">Graphic Designer</strong>, or <strong style="color:var(--text)">Web
+              Designer</strong> where I can contribute visually and technically.</p>
+          <div class="highlight-box">
+            <p>💡 I believe great design is invisible — it guides users naturally, communicates clearly, and feels
+              effortless. My goal is to build experiences people love using.</p>
+          </div>
+          <div class="about-services">
+            <div class="service-pill"><span class="service-icon"><i class="bi bi-brush"></i></span>UI/UX Design</div>
+            <div class="service-pill"><span class="service-icon"><i class="bi bi-wordpress"></i></span>Graphic Design
+            </div>
+            <div class="service-pill"><span class="service-icon"><i class="bi bi-rulers"></i></span>Wireframing</div>
+            <div class="service-pill"><span class="service-icon"><i class="bi bi-pc-display"></i></span>Web Design</div>
+            <div class="service-pill"><span class="service-icon"><i class="bi bi-pc-display"></i></span>Front-End Dev
+            </div>
+            <div class="service-pill"><span class="service-icon"><i class="bi bi-wordpress"></i></span>WordPress</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ EDUCATION & TRAINING ══ -->
-<section class="edu-section" id="education">
-  <div class="container">
-    <div class="fade-up">
-      <p class="section-label">My Journey</p>
-      <h2 class="section-title-big display">Education &amp; <em>Training</em></h2>
-    </div>
-    <div class="edu-columns" style="margin-top:3rem;">
-      <!-- Training -->
-      <div>
-        <div class="edu-col-label">🎓 Professional Training</div>
-        <div class="timeline">
-          <div class="timeline-item training-item fade-up">
-            <div class="timeline-date">2025 — 2026 · 1 Year</div>
-            <h4>Creative Designer &amp; Front-End Developer</h4>
-            <div class="inst">Learn Computer Academy, Habra</div>
-            <ul class="timeline-bullets">
-              <li>Completed intensive training in design and front-end technologies</li>
-              <li>Learned industry-standard software: Photoshop,Figma</li>
-              <li>Worked on real-world design and web development projects</li>
-              <li>Mastered web fundamentals: HTML, CSS, Bootstrap, JavaScript, jQuery</li>
-              <li>Gained exposure to PHP, MySQL, and WordPress development</li>
-            </ul>
-          </div>
-          <div class="timeline-item training-item fade-up">
-            <div class="timeline-date">Ongoing</div>
-            <h4>Back-End Development</h4>
-            <div class="inst">Additional Learning</div>
-            <ul class="timeline-bullets">
-              <li>Back-End Development using PHP &amp; MySQL (in progress)</li>
-              <li>Continuing to expand full-stack capabilities</li>
-            </ul>
-          </div>
-        </div>
+  <!-- ══ SKILLS ══ -->
+  <section class="skills-section" id="skills">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">My Toolkit</p>
+        <h2 class="section-title-big display">Skills &amp; <em>Expertise</em></h2>
+        <p style="color:var(--muted);max-width:560px;">A combination of design sensibility and technical ability — I can
+          take a product from concept to code.</p>
       </div>
-      <!-- Education -->
-      <div>
-        <div class="edu-col-label">📚 Academic Education</div>
-        <div class="timeline">
-          <div class="timeline-item fade-up">
-            <div class="timeline-date">2019 — 2022</div>
-            <h4>Bachelor of Arts (B.A)</h4>
-            <div class="inst">SC College Science &amp; Arts</div>
-          </div>
-          <div class="timeline-item fade-up">
-            <div class="timeline-date">2017 — 2019</div>
-            <h4>Higher Secondary — Bio-Science</h4>
-            <div class="inst">Kalyangarh Girls (H.S) · W.B.C.H.S.E</div>
-          </div>
-          <div class="timeline-item fade-up">
-            <div class="timeline-date">2017</div>
-            <h4>Secondary Education</h4>
-            <div class="inst">Hatthuba Kalibala Kannya Vidyapith · W.B.B.S.E</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ══ CONTACT ══ -->
-<section id="contact">
-  <div class="container">
-    <div class="fade-up text-center" style="text-align:center;">
-      <p class="section-label" style="justify-content:center;">Get In Touch</p>
-      <h2 class="section-title-big display">Let's work <em>together</em></h2>
-      <p style="color:var(--muted);max-width:480px;margin:0 auto 1rem;">Looking for opportunities in design &amp; development. Open to full-time roles, freelance projects, and internships.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-info fade-up">
-        <h3 class="display">Say hello 👋</h3>
-        <p>I'm actively seeking roles as a UI/UX Designer, Graphic Designer, or Web Designer. Let's connect and discuss your next project.</p>
-        <div class="contact-links">
-          <a href="tel:+918101134686" class="contact-link">
-            <div class="contact-link-icon"><i class="bi bi-telephone-fill"></i></div>
-            (+91) 8101134686
-          </a>
-          <a href="mailto:roydoyel764@gmail.com" class="contact-link">
-            <div class="contact-link-icon"><i class="bi bi-envelope"></i></div>
-            roydoyel764@gmail.com
-          </a>
-          <a href="#" class="contact-link">
-            <div class="contact-link-icon"><i class="bi bi-geo-alt-fill"></i></div>
-            Habra, Barasat, North 24 Pgs, West Bengal
-          </a>
-          <a href="https://www.linkedin.com/in/doyel-roy-a2a5173a6/" class="contact-link">
-            <div class="contact-link-icon" style="background:rgba(94,234,212,.12);color:var(--mint);"><i class="bi bi-linkedin"></i></div>
-            LinkedIn Profile
-          </a>
+      <div class="skills-categories">
+        <!-- Design -->
+        <div class="skill-cat cat-design fade-up">
+          <div class="skill-cat-icon"><i class="bi bi-brush-fill"></i></div>
+          <h4>Design & Creative</h4>
+          <p class="sub">Visual design, branding &amp; UI</p>
+          <ul class="skill-list">
+            <li><span class="name">Photoshop</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".85"></div>
+              </div>
+            </li>
+            <!-- <li><span class="name">Illustrator</span><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width=".75"></div></div></li> -->
+            <li><span class="name">Figma</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".80"></div>
+              </div>
+            </li>
+            <li><span class="name">UI/UX Design</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".78"></div>
+              </div>
+            </li>
+            <li><span class="name">Wireframing</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".75"></div>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div style="margin-top:2rem;">
-          <p class="section-label">Languages</p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
-            <span class="chip">Hindi</span>
-            <span class="chip">Bengali</span>
-            <span class="chip">English</span>
+        <!-- Front-End -->
+        <div class="skill-cat cat-front fade-up">
+          <div class="skill-cat-icon"><i class="bi bi-pc-display-horizontal"></i></div>
+          <h4>Front-End Development</h4>
+          <p class="sub">Responsive &amp; interactive UI</p>
+          <ul class="skill-list">
+            <li><span class="name">HTML5</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".90"></div>
+              </div>
+            </li>
+            <li><span class="name">CSS3</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".88"></div>
+              </div>
+            </li>
+            <li><span class="name">Bootstrap</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".85"></div>
+              </div>
+            </li>
+            <li><span class="name">JavaScript</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".72"></div>
+              </div>
+            </li>
+            <li><span class="name">jQuery</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".78"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- Back-End / CMS -->
+        <div class="skill-cat cat-back fade-up">
+          <div class="skill-cat-icon"><i class="bi bi-database-fill"></i></div>
+          <h4>Back-End & CMS</h4>
+          <p class="sub">Dynamic sites &amp; platforms</p>
+          <ul class="skill-list">
+            <li><span class="name">PHP</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".60"></div>
+              </div>
+            </li>
+            <li><span class="name">MySQL</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".58"></div>
+              </div>
+            </li>
+            <li><span class="name">WordPress</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".72"></div>
+              </div>
+            </li>
+            <li><span class="name">Responsive Design</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".88"></div>
+              </div>
+            </li>
+            <li><span class="name">Social Media Design</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" data-width=".82"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tools-grid fade-up" style="margin-top:2.5rem;">
+        <span class="section-label" style="width:100%">All Tools &amp; Technologies</span>
+        <span class="tool-chip">Photoshop</span>
+        <!-- <span class="tool-chip">Illustrator</span> -->
+        <span class="tool-chip">Figma</span>
+        <span class="tool-chip">HTML5</span>
+        <span class="tool-chip">CSS3</span>
+        <span class="tool-chip">Bootstrap 5</span>
+        <span class="tool-chip">JavaScript</span>
+        <span class="tool-chip">jQuery</span>
+        <span class="tool-chip">PHP</span>
+        <span class="tool-chip">MySQL</span>
+        <span class="tool-chip">WordPress</span>
+        <span class="tool-chip">Wireframing</span>
+        <span class="tool-chip">Prototyping</span>
+        <span class="tool-chip">Brand Identity</span>
+        <span class="tool-chip">Social Media Design</span>
+        <span class="tool-chip">Poster Design</span>
+        <span class="tool-chip">Logo Design</span>
+        <span class="tool-chip">Responsive Design</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES ══ -->
+  <section id="services">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">What I Offer</p>
+        <h2 class="section-title-big display">Services I <em>provide</em></h2>
+        <p style="color:var(--muted);max-width:520px;">From design concepts to live websites — here's how I can help
+          your brand stand out.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <span class="service-emoji"></span>
+          <div class="service-num">01</div>
+          <h3>UI/UX Design</h3>
+          <p>User research, wireframing, prototyping, and high-fidelity UI design in Figma. Creating intuitive,
+            beautiful interfaces that put users first.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-emoji"></span>
+          <div class="service-num">02</div>
+          <h3>Graphic Design</h3>
+          <p>Logos, posters, banners, social media creatives, and brand identity. Visual communication with purpose —
+            designed in Photoshop &amp; Illustrator.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-emoji"></span>
+          <div class="service-num">03</div>
+          <h3>Web Design &amp; Development</h3>
+          <p>Pixel-perfect, responsive websites using HTML, CSS, Bootstrap, and JavaScript. Design and code delivered
+            together for a seamless experience.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-emoji"></span>
+          <div class="service-num">04</div>
+          <h3>Wireframing &amp; Prototyping</h3>
+          <p>Low-fidelity to high-fidelity wireframes and interactive prototypes. Helping you validate ideas before a
+            single line of code is written.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-emoji"></span>
+          <div class="service-num">05</div>
+          <h3>WordPress Development</h3>
+          <p>Custom WordPress websites with theme customization, plugin integration, and dynamic, user-friendly CMS
+            setups for your business.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-emoji"></span>
+          <div class="service-num">06</div>
+          <h3>Social Media Design</h3>
+          <p>Eye-catching social media posts, stories, and creatives for Instagram, Facebook, and LinkedIn — on-brand
+            and scroll-stopping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PORTFOLIO ══ -->
+  <section id="portfolio" style="background:var(--surface);">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">My Work</p>
+        <h2 class="section-title-big display">Selected <em>Projects</em></h2>
+      </div>
+      <div class="portfolio-filter">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="design">UI/UX Design</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+      </div>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card featured fade-up" data-cat="design">
+          <div class="project-thumb"
+            style="background:linear-gradient(135deg,rgba(124,111,247,.2),rgba(192,132,252,.15));">
+            <span style="font-size:4rem;">📱</span>
+            <div class="project-overlay">
+              <img src="./assets/images/design-1.jpg" alt="design-1" class="img-fluid" />
+              <a href="#" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;">Live Demo</a>
+              <a href="#" class="btn btn-ghost" style="font-size:.82rem;padding:.6rem 1.2rem;">GitHub</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="chip accent">App Design</span>
+              <span class="chip mint">UI/UX Design</span>
+              <span class="chip">Wireframe</span>
+            </div>
+            <h3>UI/UX Design — App Solution</h3>
+            <p>A complete UI/UX design project including wireframes, user flows, and high-fidelity prototypes. Focused
+              on creating intuitive, accessible, and visually refined mobile app interfaces.</p>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card fade-up" data-cat="web">
+          <div class="project-thumb">
+            <img src="./assets/images/botanic.jpg" alt="botanic" class="img-fit">
+            <!-- <span style="font-size:3rem;">🌿</span> -->
+            <div class="project-overlay">
+              <a href="https://doyelroydeveloper.github.io/botanic/" class="btn btn-primary"
+                style="font-size:.82rem;padding:.6rem 1.2rem;" target="_blank">Live Demo</a>
+              <a href="#" class="btn btn-ghost" style="font-size:.82rem;padding:.6rem 1.2rem;">GitHub</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="chip mint">Web Design</span>
+              <span class="chip gold">UI/UX</span>
+            </div>
+            <h3>Botanic — Plant Website &amp; Design</h3>
+            <p>A plant e-commerce website featuring clean design, smooth layouts, and a fresh color palette.</p>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="project-card fade-up" data-cat="graphic">
+          <div class="project-thumb"
+            style="background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(192,132,252,.1));">
+            <span style="font-size:3rem;">🖼️</span>
+            <div class="project-overlay">
+              <a href="#" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;">View Work</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="chip gold">Graphic Design</span>
+              <span class="chip">Branding</span>
+              <span class="chip">Social Media</span>
+            </div>
+            <h3>Brand & Social Media Creatives</h3>
+            <p>A collection of graphic design work including posters, banners, logos, and social media creatives.
+              Focused on clean aesthetics and strong visual communication.</p>
+          </div>
+        </div>
+        <!-- project-4 -->
+        <div class="project-card fade-up" data-cat="graphic">
+          <div class="project-thumb">
+            <img src="./assets/images/coffee-app.jpg" alt="coffee-app" class="img-fit">
+            <!-- <span style="font-size:3rem;">🖼️</span> -->
+            <div class="project-overlay">
+              <a href="#" class="btn btn-primary" style="font-size:.82rem;padding:.6rem 1.2rem;">View Work</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="chip gold">Graphic Design</span>
+              <span class="chip gold">UI/UX</span>
+            </div>
+            <h3>Coffee-app-UI/UX design</h3>
+            <p>A collection of graphic design work on Coffee-app design by Figma .
+              Focused on clean aesthetics and strong visual communication.</p>
           </div>
         </div>
       </div>
-      <div class="contact-form fade-up">
-        <form id="contactForm" autocomplete="off" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="fcafee20-a8c2-4456-80eb-5c960b3acd1f" />
-          <input type="hidden" name="from_name" value="New Email From My Portfolio" />
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" name="firstname" placeholder="First name" required />
+    </div>
+  </section>
+
+  <!-- ══ EDUCATION & TRAINING ══ -->
+  <section class="edu-section" id="education">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">My Journey</p>
+        <h2 class="section-title-big display">Education &amp; <em>Training</em></h2>
+      </div>
+      <div class="edu-columns" style="margin-top:3rem;">
+        <!-- Training -->
+        <div>
+          <div class="edu-col-label">🎓 Professional Training</div>
+          <div class="timeline">
+            <div class="timeline-item training-item fade-up">
+              <div class="timeline-date">2025 — 2026 · 1 Year</div>
+              <h4>Creative Designer &amp; Front-End Developer</h4>
+              <div class="inst">Learn Computer Academy, Habra</div>
+              <ul class="timeline-bullets">
+                <li>Completed intensive training in design and front-end technologies</li>
+                <li>Learned industry-standard software: Photoshop,Figma</li>
+                <li>Worked on real-world design and web development projects</li>
+                <li>Mastered web fundamentals: HTML, CSS, Bootstrap, JavaScript, jQuery</li>
+                <li>Gained exposure to PHP, MySQL, and WordPress development</li>
+              </ul>
+            </div>
+            <div class="timeline-item training-item fade-up">
+              <div class="timeline-date">Ongoing</div>
+              <h4>Back-End Development</h4>
+              <div class="inst">Additional Learning</div>
+              <ul class="timeline-bullets">
+                <li>Back-End Development using PHP &amp; MySQL (in progress)</li>
+                <li>Continuing to expand full-stack capabilities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Education -->
+        <div>
+          <div class="edu-col-label">📚 Academic Education</div>
+          <div class="timeline">
+            <div class="timeline-item fade-up">
+              <div class="timeline-date">2019 — 2022</div>
+              <h4>Bachelor of Arts (B.A)</h4>
+              <div class="inst">SC College Science &amp; Arts</div>
+            </div>
+            <div class="timeline-item fade-up">
+              <div class="timeline-date">2017 — 2019</div>
+              <h4>Higher Secondary — Bio-Science</h4>
+              <div class="inst">Kalyangarh Girls (H.S) · W.B.C.H.S.E</div>
+            </div>
+            <div class="timeline-item fade-up">
+              <div class="timeline-date">2017</div>
+              <h4>Secondary Education</h4>
+              <div class="inst">Hatthuba Kalibala Kannya Vidyapith · W.B.B.S.E</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact">
+    <div class="container">
+      <div class="fade-up text-center" style="text-align:center;">
+        <p class="section-label" style="justify-content:center;">Get In Touch</p>
+        <h2 class="section-title-big display">Let's work <em>together</em></h2>
+        <p style="color:var(--muted);max-width:480px;margin:0 auto 1rem;">Looking for opportunities in design &amp;
+          development. Open to full-time roles, freelance projects, and internships.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info fade-up">
+          <h3 class="display">Say hello 👋</h3>
+          <p>I'm actively seeking roles as a UI/UX Designer, Graphic Designer, or Web Designer. Let's connect and
+            discuss your next project.</p>
+          <div class="contact-links">
+            <a href="tel:+918101134686" class="contact-link">
+              <div class="contact-link-icon"><i class="bi bi-telephone-fill"></i></div>
+              (+91) 8101134686
+            </a>
+            <a href="mailto:roydoyel764@gmail.com" class="contact-link">
+              <div class="contact-link-icon"><i class="bi bi-envelope"></i></div>
+              roydoyel764@gmail.com
+            </a>
+            <a href="#" class="contact-link">
+              <div class="contact-link-icon"><i class="bi bi-geo-alt-fill"></i></div>
+              Habra, Barasat, North 24 Pgs, West Bengal
+            </a>
+            <a href="https://www.linkedin.com/in/doyel-roy-a2a5173a6/" class="contact-link">
+              <div class="contact-link-icon" style="background:rgba(94,234,212,.12);color:var(--mint);"><i
+                  class="bi bi-linkedin"></i></div>
+              LinkedIn Profile
+            </a>
+          </div>
+          <div style="margin-top:2rem;">
+            <p class="section-label">Languages</p>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
+              <span class="chip">Hindi</span>
+              <span class="chip">Bengali</span>
+              <span class="chip">English</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form fade-up">
+          <form id="contactForm" autocomplete="off" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="fcafee20-a8c2-4456-80eb-5c960b3acd1f" />
+            <input type="hidden" name="from_name" value="New Email From My Portfolio" />
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="firstname" placeholder="First name" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="lastname" placeholder="Last name" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your@email.com" required />
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" name="phone" placeholder="Phone number" />
+              </div>
             </div>
             <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" name="lastname" placeholder="Last name" required />
+              <label>I'm looking for</label>
+              <select name="subject">
+                <option value="">Select a service...</option>
+                <option>UI/UX Designer</option>
+                <option>Graphic Designer</option>
+                <option>Web Designer</option>
+                <option>Front-End Developer</option>
+                <option>WordPress Developer</option>
+                <option>Freelance Project</option>
+                <option>Other</option>
+              </select>
             </div>
-          </div>
-          <div class="form-row">
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="your@email.com" required />
+              <label>Message</label>
+              <textarea name="message" placeholder="Tell me about your project or opportunity..."></textarea>
             </div>
-            <div class="form-group">
-              <label>Phone</label>
-              <input type="tel" name="phone" placeholder="Phone number" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label>I'm looking for</label>
-            <select name="subject">
-              <option value="">Select a service...</option>
-              <option>UI/UX Designer</option>
-              <option>Graphic Designer</option>
-              <option>Web Designer</option>
-              <option>Front-End Developer</option>
-              <option>WordPress Developer</option>
-              <option>Freelance Project</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea name="message" placeholder="Tell me about your project or opportunity..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message ✉️</button>
-          <div id="form-result"></div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#hero" class="nav-logo" style="font-size:1.6rem;">Doyel<span>.</span></a>
-        <p>Creative designer &amp; front-end developer crafting beautiful digital experiences from Habra, West Bengal.</p>
-        <div class="footer-socials">
-          <a href="https://www.linkedin.com/in/doyel-roy-a2a5173a6/" class="social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="doyelroydeveloper.github.io" class="social-btn" title="GitHub"><i class="bi bi-github"></i></a>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message
+              ✉️</button>
+            <div id="form-result"></div>
+          </form>
         </div>
       </div>
-      <div class="footer-col">
-        <h5>Quick Links</h5>
-        <ul>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Projects</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo" style="font-size:1.6rem;">Doyel<span>.</span></a>
+          <p>Creative designer &amp; front-end developer crafting beautiful digital experiences from Habra, West Bengal.
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/doyel-roy-a2a5173a6/" class="social-btn" title="LinkedIn"><i
+                class="bi bi-linkedin"></i></a>
+            <a href="doyelroydeveloper.github.io" class="social-btn" title="GitHub"><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+918101134686">(+91) 8101134686</a></li>
+            <li><a href="mailto:roydoyel764@gmail.com">roydoyel764@gmail.com</a></li>
+            <li><a href="#">Habra, Barasat, WB</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="tel:+918101134686">(+91) 8101134686</a></li>
-          <li><a href="mailto:roydoyel764@gmail.com">roydoyel764@gmail.com</a></li>
-          <li><a href="#">Habra, Barasat, WB</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <span>© 2026 Doyel Roy. All rights reserved.</span>
+        <span>Designed &amp; Developed by <strong style="color:var(--accent)">Doyel Roy</strong></span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Doyel Roy. All rights reserved.</span>
-      <span>Designed &amp; Developed by <strong style="color:var(--accent)">Doyel Roy</strong></span>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- custom js -->
+  <!-- custom js -->
 
-<script src="./assets/js/app.js"></script>
+  <script src="./assets/js/app.js"></script>
 </body>
+
 </html>
