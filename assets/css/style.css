@@ -1028,9 +1028,9 @@ nav.main-nav.scrolled {
     color: var(--muted);
 }
 
-.project-card.featured {
+/* .project-card.featured {
     grid-column: span 2;
-}
+} */
 
 .project-card.featured .project-thumb {
     height: 280px;
